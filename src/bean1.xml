@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 使用property标签完成属性注入 name:类里面的属性名称 value:向属性中注入的值 -->
+    <!-- set方法注入属性 -->
+<!--    <property name="name" value="hkw"></property>-->
+<!--    <property name="age" value="22"></property>-->
+    <!-- 配置User对象创建 -->
+<!--    <bean id="user" class="com.hkw.spring5.User">-->
+<!--        &lt;!&ndash; 有参构造方法注入属性 &ndash;&gt;-->
+<!--        <constructor-arg name="name" value="hkw1"></constructor-arg>-->
+<!--        <constructor-arg name="age" value="18"></constructor-arg>-->
+<!--    </bean>-->
+
+        <!-- 配置User对象创建 -->
+<!--        <bean id="user" class="com.hkw.spring5.User">-->
+<!--            <property name="name">-->
+<!--                <value><![CDATA[<<hkw>>]]></value>-->
+<!--            </property>-->
+<!--            <property name="age" value="22"></property>-->
+<!--        </bean>-->
+
+    <!-- 配置User对象创建(p名称空间方式注入属性) -->
+<!--    <bean id="user" class="com.hkw.spring5.User" p:name="黄康伟" p:age="20"></bean>-->
+
+<!--    &lt;!&ndash; service 对象创建 &ndash;&gt;-->
+<!--    <bean id="userService" class="com.hkw.spring5.service.UserService">-->
+<!--        &lt;!&ndash; 注入 userDao 对象-->
+<!--             name 属性：类里面属性名称-->
+<!--             ref 属性：创建 userDao 对象 bean 标签 id 值-->
+<!--         &ndash;&gt;-->
+<!--        <property name="userDao" ref="userDaoImpl"></property>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; dao 对象创建 &ndash;&gt;-->
+<!--    <bean id="userDaoImpl" class="com.hkw.spring5.dao.UserDaoImpl"></bean>-->
+
+    <!-- Employee 对象创建 -->
+<!--    <bean id="employee" class="com.hkw.spring5.bean.Employee">-->
+<!--        &lt;!&ndash; 设置普通类型属性 &ndash;&gt;-->
+<!--        <property name="name" value="hkw"></property>-->
+<!--        <property name="gender" value="男"></property>-->
+<!--        &lt;!&ndash; 设置对象类型属性 &ndash;&gt;-->
+<!--        <property name="department">-->
+<!--            <bean class="com.hkw.spring5.bean.Department">-->
+<!--                <property name="dName" value="技术部"></property>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; 级联操作 第一种写法 &ndash;&gt;-->
+<!--    &lt;!&ndash; Employee 对象创建 &ndash;&gt;-->
+<!--    <bean id="employee" class="com.hkw.spring5.bean.Employee">-->
+<!--        &lt;!&ndash; 设置普通类型属性 &ndash;&gt;-->
+<!--        <property name="name" value="Lucy"></property>-->
+<!--        <property name="gender" value="女"></property>-->
+<!--        <property name="department" ref="department"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="department" class="com.hkw.spring5.bean.Department">-->
+<!--        <property name="dName" value="财务部"></property>-->
+<!--    </bean>-->
+
+    <!-- 级联操作 第二种写法 -->
+    <!-- Employee 对象创建 -->
+<!--    <bean id="employee" class="com.hkw.spring5.bean.Employee">-->
+<!--        &lt;!&ndash; 设置普通类型属性 &ndash;&gt;-->
+<!--        <property name="name" value="Mary"></property>-->
+<!--        <property name="gender" value="女"></property>-->
+<!--        <property name="department" ref="department"></property>-->
+<!--        <property name="department.dName" value="人事部"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="department" class="com.hkw.spring5.bean.Department"></bean>-->
+
+<!--    <bean id="student" class="com.hkw.spring5.collectionType.Student">-->
+<!--        &lt;!&ndash; 数组类型属性注入 &ndash;&gt;-->
+<!--        <property name="courses">-->
+<!--            <array>-->
+<!--                <value>数学</value>-->
+<!--                <value>语文</value>-->
+<!--                <value>英语</value>-->
+<!--            </array>-->
+<!--        </property>-->
+<!--        &lt;!&ndash; List类型属性注入 &ndash;&gt;-->
+<!--        <property name="list">-->
+<!--            <list>-->
+<!--                <value>list1</value>-->
+<!--                <value>list2</value>-->
+<!--                <value>list3</value>-->
+<!--                <value>list3</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        &lt;!&ndash; Set类型属性注入 &ndash;&gt;-->
+<!--        <property name="set">-->
+<!--            <set>-->
+<!--                <value>set1</value>-->
+<!--                <value>set2</value>-->
+<!--                <value>set3</value>-->
+<!--                <value>set3</value>-->
+<!--            </set>-->
+<!--        </property>-->
+<!--        &lt;!&ndash; Map类型属性注入 &ndash;&gt;-->
+<!--        <property name="map">-->
+<!--            <map>-->
+<!--                <entry key="1" value="map1"></entry>-->
+<!--                <entry key="2" value="map2"></entry>-->
+<!--                <entry key="3" value="map3"></entry>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <bean id="student" class="com.hkw.spring5.collectionType.Student">
+        <property name="courseList">
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+                <ref bean="course3"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="course1" class="com.hkw.spring5.collectionType.Course">
+        <property name="cName" value="java"></property>
+    </bean>
+
+    <bean id="course2" class="com.hkw.spring5.collectionType.Course">
+        <property name="cName" value="mysql"></property>
+    </bean>
+
+    <bean id="course3" class="com.hkw.spring5.collectionType.Course">
+        <property name="cName" value="html"></property>
+    </bean>
+
+</beans>

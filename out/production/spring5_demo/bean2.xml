@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:list id="list">
+        <value>语</value>
+        <value>数</value>
+        <value>英</value>
+        <value>化</value>
+        <value>生</value>
+        <value>物</value>
+    </util:list>
+
+    <bean id="student" class="com.hkw.spring5.collectionType.Student">
+        <property name="list" ref="list"></property>
+    </bean>
+
+</beans>
