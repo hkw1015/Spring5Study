@@ -1,6 +1,8 @@
 package com.hkw.spring5.service;
 
-import com.hkw.spring5.dao.UserDao;
+import com.hkw.spring5.bean.User;
+
+import java.util.List;
 
 /**
  * @ClassName : UserService
@@ -8,15 +10,31 @@ import com.hkw.spring5.dao.UserDao;
  * @Author : hkw
  * @Date: 2020-08-20 10:02
  */
-public class UserService {
-    // 创建 UserDao 类型属性，生成 set 方法
-    private UserDao userDao;
+public interface UserService {
+    // 注册用户
+    boolean registUser(User user);
 
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
+    // 更新用户
+    boolean updateUser(User user);
 
-    public void add() {
-        userDao.add();
-    }
+    // 删除用户
+    boolean deleteUser(Integer id);
+
+    // 查询用户总数
+    int getTotalNumberOfUsers();
+
+    // 查询某个用户
+    User getUser(Integer id);
+
+    // 查询所有用户
+    List<User> getAllUserList();
+
+    // 批量添加用户
+    boolean batchAddUser(List<Object[]> batchArgs);
+
+    // 批量修改用户
+    boolean batchUpdateUser(List<Object[]> batchArgs);
+
+    // 批量删除用户
+    boolean batchDeleteUser(List<Object[]> batchArgs);
 }
